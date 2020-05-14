@@ -7,7 +7,7 @@
  * Output: 1->1->2->3->4->4
  *
  */
-private class ListNode {
+class ListNode {
     int val;
     ListNode next;
     ListNode() {}
