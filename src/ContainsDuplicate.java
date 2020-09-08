@@ -14,11 +14,12 @@
  * Output: true
  */
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ContainsDuplicate {
-    public boolean containsDuplicate(int[] nums) {
+    public boolean containsDuplicate1(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; ++i) {
             if (!map.containsKey(nums[i])) {
@@ -26,6 +27,14 @@ public class ContainsDuplicate {
             } else {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public boolean containsDuplicate2(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 1; ++i) {
+            if (nums[i] == nums[i + 1]) return true;
         }
         return false;
     }

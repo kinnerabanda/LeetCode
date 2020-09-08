@@ -20,7 +20,7 @@
  * rotate 2 steps to the right: [3,99,-1,-100]
  */
 public class RotateArray {
-    public void rotate(int[] nums, int k) {
+    public void rotate1(int[] nums, int k) {
         int temp, previous;
         for (int i = 0; i < k; i++) {
             previous = nums[nums.length - 1];
@@ -29,6 +29,33 @@ public class RotateArray {
                 nums[j] = previous;
                 previous = temp;
             }
+        }
+    }
+
+    public void rotate2(int[] nums, int k) {
+        int[] a = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            a[(i + k) % nums.length] = nums[i];
+        }
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = a[i];
+        }
+    }
+
+    public void rotate3(int[] nums, int k) {
+        k = k % nums.length;
+        int count = 0;
+        for (int start = 0; count < nums.length; start++) {
+            int current = start;
+            int prev = nums[start];
+            do {
+                int next = (current + k) % nums.length;
+                int temp = nums[next];
+                nums[next] = prev;
+                prev = temp;
+                current = next;
+                count++;
+            } while (start != current);
         }
     }
 }
